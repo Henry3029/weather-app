@@ -6,18 +6,24 @@ let isCelsius = true;
 btn.addEventListener("click", async () => {
   const city = document.getElementById("cityInput").value;
   const p = document.getElementById("message");
+  const spinner = document.getElementById("spinner");
   const iconImg = document.getElementById("weatherIcon");
 
   try {
+  	spinner.style.display = "block";
+  	p.textContent = "Looding...";
+  p.style.color = "green";
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`
     );
+  
 
     if (!response.ok) {
       throw new Error(`Fail to fetch: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
+    spinner.style.display = "none";
     const iconCode = data.weather[0].icon;
     iconImg.style.display = "block";
     iconImg.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
@@ -38,6 +44,7 @@ document.getElementById("toggleUnit").style.display = "block";
     console.error(error.message);
     p.style.color = "red";
     p.textContent = error.message;
+    spinner.style.display = "none";
   }
 });
 

@@ -23,10 +23,11 @@ body {
 	background: rgba(255, 255, 255, 0.9)
   background: white;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 1rem
+  box-shadow: 0 1rem 1rem rgba(0,0,0,0.1);
   text-align: center;
-  width: 300px;
+  width: 300%
+  max-width: 400px; 
 }
 
 input {
@@ -69,3 +70,19 @@ img {
   border-radius: 8px;
   cursor: pointer;
 	}
+	
+	.spinner {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
